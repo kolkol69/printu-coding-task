@@ -10,6 +10,7 @@ interface IInitResponse {
 }
 
 function* fetchProjectSaga(action: ReturnType<typeof fetchProject>): Generator {
+  yield put(projectActions.setLoading(true))
   let projectId = action.payload
 
   // If no projectId is provided, init a new one
@@ -60,6 +61,7 @@ function* fetchProjectSaga(action: ReturnType<typeof fetchProject>): Generator {
     }
 
     yield put(projectActions.setProject(data))
+    yield put(projectActions.setLoading(false))
   } catch (error) {
     console.error(error)
   }

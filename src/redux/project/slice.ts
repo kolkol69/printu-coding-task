@@ -22,6 +22,7 @@ export interface IProject {
 
 export interface IProjectState extends IProject {
   error?: string | null
+  loading?: boolean
 }
 
 const initialState: IProjectState = {
@@ -34,6 +35,7 @@ const initialState: IProjectState = {
     items: [],
   },
   error: null,
+  loading: false,
 }
 
 const projectSlice = createSlice({
@@ -45,6 +47,9 @@ const projectSlice = createSlice({
     },
     setError: (state, action: PayloadAction<string>) => {
       state.error = action.payload
+    },
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload
     },
   },
 })

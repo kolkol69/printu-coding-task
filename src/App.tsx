@@ -11,6 +11,7 @@ function App(): JSX.Element {
   const dispatch = useAppDispatch()
   const {
     error,
+    loading,
     project: { id, name, height, width, items },
   } = useAppSelector((state) => state.project)
 
@@ -22,6 +23,8 @@ function App(): JSX.Element {
       ),
     )
   }
+
+  const hasError = error != null
 
   return (
     <div className="container">
@@ -51,10 +54,12 @@ function App(): JSX.Element {
           />
         </div>
       </div>
-      <div id="project">
-        {error != null ? (
-          <div>Something went wrong. Error: {error}</div>
-        ) : (
+      {hasError ? (
+        <div>Something went wrong. Error: {error}</div>
+      ) : loading ? (
+        <div>Loading...</div>
+      ) : (
+        <div id="project">
           <ProjectLayout
             key={id}
             id={id}
@@ -62,8 +67,8 @@ function App(): JSX.Element {
             height={height}
             items={items}
           />
-        )}
-      </div>
+        </div>
+      )}
     </div>
   )
 }
