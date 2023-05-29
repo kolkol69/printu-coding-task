@@ -45,7 +45,10 @@ function App(): JSX.Element {
         </div>
         <div className="description-details">
           ID:
-          <input value={id} />
+          <input
+            readOnly
+            value={id}
+          />
         </div>
       </div>
       <div id="project">
