@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.description {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.description-details {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+#project {
+  flex-grow: 1;
+  overflow: hidden;
+  background-color: #bbbbbb;
+}
